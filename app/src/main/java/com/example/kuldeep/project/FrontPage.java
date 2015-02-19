@@ -1,83 +1,39 @@
 package com.example.kuldeep.project;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
+import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ExpandableListView;
 import android.widget.ListView;
-import android.widget.Toast;
-
-import com.parse.LogInCallback;
-import com.parse.Parse;
-import com.parse.ParseACL;
-import com.parse.ParseAnonymousUtils;
-import com.parse.ParseException;
-import com.parse.ParseUser;
-import com.parse.SignUpCallback;
 
 import java.util.ArrayList;
 
 
-public class MainActivity extends ActionBarActivity {
+public class FrontPage extends ActionBarActivity implements AdapterView.OnItemClickListener{
 
+    private DrawerLayout drawerLayout;
+    private ListView listview;
+    private ExpandListAdapter ExpAdapter;
+    private ArrayList<ExpandListGroup> ExpListItems;
+    private ExpandableListView ExpandList;
+    private String[] side_menu;
+    private android.support.v4.app.ActionBarDrawerToggle drawerListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login_signup);
-        //Toast.makeText(getApplicationContext(), "In main", Toast.LENGTH_LONG).show();
-        Parse.initialize(this, "MrkxcjSNkLte4MQQycE83O1Y10hHQ40bTI8L18Pv", "hr6qdFS8nJ74fZTr0GodzcSAdVw6bcDQSZLxbOhv");
+        setContentView(R.layout.activity_front_page);
 
-        setContentView(R.layout.activity_login_signup);
-
-
-        ParseUser.enableAutomaticUser();
-        ParseACL defaultACL = new ParseACL();
-
-        // If you would like all objects to be private by default, remove this
-        // line.
-        defaultACL.setPublicReadAccess(true);
-
-        ParseACL.setDefaultACL(defaultACL, true);
-
-        // Determine whether the current user is an anonymous user
-        if (ParseAnonymousUtils.isLinked(ParseUser.getCurrentUser())) {
-            // If user is anonymous, send the user to LoginSignupActivity.class
-            Intent intent = new Intent(MainActivity.this,LoginSignupActivity.class);
-            startActivity(intent);
-            finish();
-        } else {
-            // If current user is NOT anonymous user
-            // Get current user data from Parse.com
-           /* ParseUser currentUser = ParseUser.getCurrentUser();
-            if (currentUser != null) {
-                // Send logged in users to Welcome.class
-
-                Intent intent = new Intent(MainActivity.this, LoginSignupActivity.class);
-                startActivity(intent);
-                finish();
-            } else {
-                // Send user to LoginSignupActivity.class
-                Intent intent = new Intent(MainActivity.this,LoginSignupActivity.class);
-                startActivity(intent);
-                finish();
-            }*/
-            Intent intent = new Intent(MainActivity.this, LoginSignupActivity.class);
-            startActivity(intent);
-            finish();
-        }
-
-    }
-       /* ExpandList = (ExpandableListView) findViewById(R.id.ExpList);
+        ExpandList = (ExpandableListView) findViewById(R.id.ExpList);
         ExpListItems = SetStandardGroups();
-        ExpAdapter = new ExpandListAdapter(MainActivity.this, ExpListItems);
+        ExpAdapter = new ExpandListAdapter(FrontPage.this, ExpListItems);
         ExpandList.setAdapter(ExpAdapter);
         side_menu = getResources().getStringArray(R.array.side_menu);
         listview = (ListView) findViewById(R.id.drawerList);
@@ -86,13 +42,12 @@ public class MainActivity extends ActionBarActivity {
         drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
         drawerListener = new android.support.v4.app.ActionBarDrawerToggle(this, drawerLayout, R.drawable.navigation, R.string.drawer_open, R.string.drawer_close){
             @Override
-            public void onDrawerOpened(View drawerView) {
+            public void onDrawerOpened (View drawerView){
                 super.onDrawerOpened(drawerView);
-               // Toast.makeText(getApplicationContext(), "Drawer Opened", Toast.LENGTH_SHORT).show();
+                // Toast.makeText(getApplicationContext(), "Drawer Opened", Toast.LENGTH_SHORT).show();
             }
-
             @Override
-            public void onDrawerClosed(View drawerView) {
+            public void onDrawerClosed (View drawerView){
                 super.onDrawerClosed(drawerView);
                 //Toast.makeText(getApplicationContext(),"Drawer Closed",Toast.LENGTH_SHORT).show();
             }
@@ -214,7 +169,7 @@ public class MainActivity extends ActionBarActivity {
         list8.add(ch6_1);
         gru7.setItems(list8);*/
 
-     /*   list.add(gru1);
+        list.add(gru1);
         list.add(gru2);
         list.add(gru3);
         list.add(gru4);
@@ -228,7 +183,7 @@ public class MainActivity extends ActionBarActivity {
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-     //   Toast.makeText(this,side_menu[position] + " was selected",Toast.LENGTH_SHORT).show();
+        //   Toast.makeText(this,side_menu[position] + " was selected",Toast.LENGTH_SHORT).show();
         selectItem(position);
     }
     public void selectItem(int position) {
@@ -238,9 +193,9 @@ public class MainActivity extends ActionBarActivity {
         Intent intent;
         switch (position){
             case 1:
-                intent = new Intent(MainActivity.this,Recipe.class);
+                intent = new Intent(FrontPage.this,Recipe.class);
                 startActivity(intent);
                 break;
         }
-    }*/
+    }
 }
