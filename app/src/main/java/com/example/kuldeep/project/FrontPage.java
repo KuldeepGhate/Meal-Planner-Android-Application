@@ -1,5 +1,6 @@
 package com.example.kuldeep.project;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
@@ -12,6 +13,9 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ExpandableListView;
 import android.widget.ListView;
+import android.widget.Toast;
+
+import com.parse.ParseUser;
 
 import java.util.ArrayList;
 
@@ -26,6 +30,7 @@ public class FrontPage extends ActionBarActivity implements AdapterView.OnItemCl
     private String[] side_menu;
     private android.support.v4.app.ActionBarDrawerToggle drawerListener;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,10 +40,28 @@ public class FrontPage extends ActionBarActivity implements AdapterView.OnItemCl
         ExpListItems = SetStandardGroups();
         ExpAdapter = new ExpandListAdapter(FrontPage.this, ExpListItems);
         ExpandList.setAdapter(ExpAdapter);
+        ExpandList.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+            @Override
+            public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
+
+                if(childPosition == 0){
+                    Intent i=new Intent(getApplicationContext(), LoginSignupActivity.class);
+                    startActivity(i);}
+                Toast.makeText(getApplicationContext(),"Group: "+groupPosition,Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),"Child: "+childPosition,Toast.LENGTH_LONG).show();
+
+                return true;
+            }
+        });
         side_menu = getResources().getStringArray(R.array.side_menu);
         listview = (ListView) findViewById(R.id.drawerList);
         listview.setAdapter(new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,side_menu));
-        listview.setOnItemClickListener(this);
+     /*   listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+            }
+        });*/
         drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
         drawerListener = new android.support.v4.app.ActionBarDrawerToggle(this, drawerLayout, R.drawable.navigation, R.string.drawer_open, R.string.drawer_close){
             @Override
@@ -71,6 +94,7 @@ public class FrontPage extends ActionBarActivity implements AdapterView.OnItemCl
         }
         return super.onOptionsItemSelected(item);
     }
+
     public ArrayList<ExpandListGroup> SetStandardGroups(){
         ArrayList<ExpandListGroup> list = new ArrayList<ExpandListGroup>();
         ArrayList<ExpandListChild> list2 = new ArrayList<ExpandListChild>();
@@ -194,6 +218,11 @@ public class FrontPage extends ActionBarActivity implements AdapterView.OnItemCl
         switch (position){
             case 1:
                 intent = new Intent(FrontPage.this,Recipe.class);
+                startActivity(intent);
+                break;
+            case 5:
+                ParseUser.logOut();
+                intent = new Intent(FrontPage.this,LoginSignupActivity.class);
                 startActivity(intent);
                 break;
         }
