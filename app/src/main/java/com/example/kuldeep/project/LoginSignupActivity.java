@@ -1,8 +1,8 @@
 package com.example.kuldeep.project;
 
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -11,9 +11,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.parse.LogInCallback;
-import com.parse.Parse;
-import com.parse.ParseACL;
-import com.parse.ParseAnonymousUtils;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;

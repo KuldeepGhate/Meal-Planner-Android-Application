@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Project</string>
+    <string name="app_name">Meal Planer </string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
 
@@ -24,11 +24,11 @@
     <string name="title_activity_recipes">Recipes</string>
     <string name="drawer_open">Open Navigation Drawer</string>
     <string name="drawer_close">Close Navigation Drawer</string>
+    <string name="mTitle">title</string>
 
-    <string-array name="side_menu">
+    <string-array name="drawer_items">
         <item>Planner</item>
         <item>Recipes</item>
-        <item>Calender</item>
         <item>Grocery</item>
         <item>Groups</item>
         <item>Logout</item>

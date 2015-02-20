@@ -9,7 +9,8 @@ tools:context=".MainActivity">
     android:id="@+id/ExpList"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
-    android:groupIndicator="@null" />
+    android:groupIndicator="@null"
+    android:clickable="true"/>
 <FrameLayout
     android:id="@+id/mainFrame"
     android:layout_width="match_parent"
@@ -18,9 +19,11 @@ tools:context=".MainActivity">
 
 <ListView
     android:id="@+id/drawerList"
-    android:background="#AEAEAE"
+
     android:layout_gravity="left"
     android:layout_width="240dp"
-    android:layout_height="match_parent">
+    android:background="#768"
+    android:layout_height="match_parent"
+    android:clickable="true">
 </ListView>
 </android.support.v4.widget.DrawerLayout>
