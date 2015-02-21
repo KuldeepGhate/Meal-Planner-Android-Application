@@ -20,6 +20,7 @@ import java.util.ArrayList;
 
 public class FrontPage extends ActionBarActivity implements AdapterView.OnItemClickListener{
 
+    Toolbar toolbar;
     private DrawerLayout drawerLayout;
     private ListView listview;
     private ExpandListAdapter ExpAdapter;
@@ -29,7 +30,6 @@ public class FrontPage extends ActionBarActivity implements AdapterView.OnItemCl
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
     private ActionBarDrawerToggle mDrawerToggle;
-    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -158,17 +158,6 @@ public class FrontPage extends ActionBarActivity implements AdapterView.OnItemCl
         return super.onOptionsItemSelected(item);
     }
 
-    private class DrawerItemClickListener implements ListView.OnItemClickListener {
-        @Override
-        public void onItemClick(AdapterView parent, View view, int position, long id) {
-            selectItem(position);
-        }
-
-
-    }
-
-
-
     public ArrayList<ExpandListGroup> SetStandardGroups(){
         ArrayList<ExpandListGroup> list = new ArrayList<ExpandListGroup>();
         ArrayList<ExpandListChild> list2 = new ArrayList<ExpandListChild>();
@@ -235,7 +224,6 @@ public class FrontPage extends ActionBarActivity implements AdapterView.OnItemCl
         gru4.setItems(list5);
 
 
-
         ExpandListGroup gru5 = new ExpandListGroup();
         gru5.setName("Friday");
         ExpandListChild ch5_1 = new ExpandListChild();
@@ -285,6 +273,14 @@ public class FrontPage extends ActionBarActivity implements AdapterView.OnItemCl
         selectItem(position);
     }
 
+    private class DrawerItemClickListener implements ListView.OnItemClickListener {
+        @Override
+        public void onItemClick(AdapterView parent, View view, int position, long id) {
+            selectItem(position);
+        }
+
+
+    }
 
 
 }
