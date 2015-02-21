@@ -18,7 +18,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 
-public class FrontPage extends ActionBarActivity implements AdapterView.OnItemClickListener{
+public class FrontPage extends ActionBarActivity implements AdapterView.OnItemClickListener {
 
     Toolbar toolbar;
     private DrawerLayout drawerLayout;
@@ -26,7 +26,7 @@ public class FrontPage extends ActionBarActivity implements AdapterView.OnItemCl
     private ExpandListAdapter ExpAdapter;
     private ArrayList<ExpandListGroup> ExpListItems;
     private ExpandableListView ExpandList;
-     private String[] mDrawerTitles;
+    private String[] mDrawerTitles;
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
     private ActionBarDrawerToggle mDrawerToggle;
@@ -42,7 +42,7 @@ public class FrontPage extends ActionBarActivity implements AdapterView.OnItemCl
         mDrawerList = (ListView) findViewById(R.id.drawerList);
         mDrawerList.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, mDrawerTitles));
         mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
-         toolbar = (Toolbar)findViewById(R.id.tool_bar);
+        toolbar = (Toolbar) findViewById(R.id.tool_bar);
 
 
         ExpandList = (ExpandableListView) findViewById(R.id.ExpList);
@@ -53,7 +53,7 @@ public class FrontPage extends ActionBarActivity implements AdapterView.OnItemCl
 
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-                Toast.makeText(getApplicationContext(),"Child:" + childPosition, Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Child:" + childPosition, Toast.LENGTH_LONG).show();
                 if (groupPosition == 0) {
                     if (childPosition == 0) {
                         Intent i = new Intent(getApplicationContext(), LoginSignupActivity.class);
@@ -112,6 +112,7 @@ public class FrontPage extends ActionBarActivity implements AdapterView.OnItemCl
 
 
     }
+
     private void selectItem(int position) {
         //Add code here if clicked on planner
         if (position == 0) {
@@ -123,6 +124,8 @@ public class FrontPage extends ActionBarActivity implements AdapterView.OnItemCl
         else if (position == 1) {
             Toast.makeText(this, "clicked on recipes", Toast.LENGTH_SHORT).show();
             //Call the method, actions to take place when clicked on recipes
+            Intent intent = new Intent(FrontPage.this, Recipe.class);
+            startActivity(intent);
 
         } else if (position == 2) {
 
@@ -158,7 +161,7 @@ public class FrontPage extends ActionBarActivity implements AdapterView.OnItemCl
         return super.onOptionsItemSelected(item);
     }
 
-    public ArrayList<ExpandListGroup> SetStandardGroups(){
+    public ArrayList<ExpandListGroup> SetStandardGroups() {
         ArrayList<ExpandListGroup> list = new ArrayList<ExpandListGroup>();
         ArrayList<ExpandListChild> list2 = new ArrayList<ExpandListChild>();
         ArrayList<ExpandListChild> list3 = new ArrayList<ExpandListChild>();

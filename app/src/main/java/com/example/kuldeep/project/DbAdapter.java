@@ -40,6 +40,7 @@ public class DbAdapter {
 
     Context context;
 
+
     DatabaseHelper DBHelper;
     SQLiteDatabase db;
 
@@ -72,6 +73,7 @@ public class DbAdapter {
 
         return r;
 
+
     }
 
     public long insertIngredients(String ingredient_name, String ingredient_value)
@@ -94,13 +96,6 @@ public class DbAdapter {
 
     }
 
-
-//    public Cursor getAllrecipes()
-//    {
-//
-//
-//
-//    }
 
     private static class DatabaseHelper extends SQLiteOpenHelper {
 
@@ -125,6 +120,7 @@ public class DbAdapter {
                 e.printStackTrace();
             }
         }
+
 
         @Override
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
