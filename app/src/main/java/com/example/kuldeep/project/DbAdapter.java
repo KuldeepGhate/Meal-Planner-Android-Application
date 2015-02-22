@@ -14,7 +14,7 @@ import android.util.Log;
 public class DbAdapter {
 
     public static final String DATABASE_NAME = "meal_planer";
-    public static final int DATABASE_VERSION = '6';
+    public static final int DATABASE_VERSION = '9';
     public static final String TAG = "DBAdapter";
 
 
@@ -24,7 +24,7 @@ public class DbAdapter {
 
     public static final String RECIPE_ID = "recipe_id";
     public static final String RECIPE_NAME = "recipe_name";
-    public static final String RECIPE_IMAGE_PATH = "recipe_path";
+    public static final String RECIPE_IMAGE_PATH = " recipe_path";
     public static final String RECIPE_PROCEDURE = "recipe_procedure";
     public static final String RECIPE_TIME = "recipe_time";
 
@@ -34,9 +34,9 @@ public class DbAdapter {
     public static final String INGREDIENT_UNIT = "ingredient_unit";
 
 
-    public static final String CREATE_RECIPE_TABLE = "create table recipe (recipe_id integer not null primary key autoincrement unique, " + "recipe_name text not null, recipe_path text not null,recipe_procedure text not null,recipe_time text not null);";
+    public static final String CREATE_RECIPE_TABLE = "create table recipe (recipe_id integer not null primary key autoincrement unique, " + "recipe_name text not null, recipe_path integer not null,recipe_procedure text not null,recipe_time text not null);";
     public static final String CREATE_INGREDIENT_TABLE = "create table ingredient (ingredient_id integer not null primary key autoincrement unique, " + "ingredient_name text not null, ingredient_unit text not null);";
-    public static final String CREATE_RECIPE_INGREDIENT_TABLE = "create table recipe_ingredient (recipe_id integer not null references , ingredient_id integer not null);";
+    public static final String CREATE_RECIPE_INGREDIENT_TABLE = "create table recipe_ingredient (recipe_id integer not null , ingredient_id integer not null);";
 
 
     Context context;
@@ -65,7 +65,7 @@ public class DbAdapter {
         DBHelper.close();
     }
 
-    public long insertRecipe(String recipe_name, String recipe_image_path, String recipe_procedure, int time) {
+    public long insertRecipe(String recipe_name, int recipe_image_path, String recipe_procedure, int time) {
         ContentValues initialValues = new ContentValues();
         initialValues.put(RECIPE_NAME, recipe_name);
         initialValues.put(RECIPE_IMAGE_PATH, recipe_image_path);
