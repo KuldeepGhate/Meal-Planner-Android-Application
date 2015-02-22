@@ -2,6 +2,7 @@ package com.example.kuldeep.project;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -94,6 +95,21 @@ public class DbAdapter {
         long r = db.insert(RECIPE_INGREDIENT, null, initialValues);
         return r;
 
+    }
+
+
+    public Cursor getAllRecipes() {
+        return db.query(RECIPE_TABLE, new String[]{RECIPE_ID, RECIPE_NAME, RECIPE_IMAGE_PATH, RECIPE_PROCEDURE, RECIPE_TIME}, null, null, null, null, null);
+    }
+
+    public Cursor getRecipe(long rowID) throws SQLException {
+        Cursor mCursor = db.query(true, RECIPE_TABLE, new String[]{RECIPE_ID, RECIPE_NAME, RECIPE_IMAGE_PATH, RECIPE_PROCEDURE, RECIPE_TIME}, RECIPE_ID + "=" + rowID, null, null, null, null, null);
+
+        if (mCursor != null) {
+
+            mCursor.moveToFirst();
+        }
+        return mCursor;
     }
 
 
