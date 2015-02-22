@@ -14,7 +14,7 @@ import android.util.Log;
 public class DbAdapter {
 
     public static final String DATABASE_NAME = "meal_planer";
-    public static final int DATABASE_VERSION = '2';
+    public static final int DATABASE_VERSION = '6';
     public static final String TAG = "DBAdapter";
 
 
@@ -22,7 +22,7 @@ public class DbAdapter {
     public static final String INGREDIENT_TABLE = "ingredient";
     public static final String RECIPE_INGREDIENT = "recipe_ingredient";
 
-    public static final String RECIPE_ID = "id";
+    public static final String RECIPE_ID = "recipe_id";
     public static final String RECIPE_NAME = "recipe_name";
     public static final String RECIPE_IMAGE_PATH = "recipe_path";
     public static final String RECIPE_PROCEDURE = "recipe_procedure";
@@ -33,10 +33,18 @@ public class DbAdapter {
     public static final String INGREDIENT_NAME = "ingredient_name";
     public static final String INGREDIENT_UNIT = "ingredient_unit";
 
+//    CREATE TABLE orders (
+//            id INTEGER PRIMARY KEY,
+//            customer_id INTEGER,
+//            salesperson_id INTEGER,
+//            FOREIGN KEY(customer_id) REFERENCES customers(id),
+//    FOREIGN KEY(salesperson_id) REFERENCES salespeople(id)
+//            );
 
-    public static final String CREATE_RECIPE_TABLE = "create table recipe (recipe_id integer not null primary key autoincrement unique, " + "recipe_name text not null, recipe_path text not null,recipe_procedure text not null.recipe_time text not null);";
+
+    public static final String CREATE_RECIPE_TABLE = "create table recipe (recipe_id integer not null primary key autoincrement unique, " + "recipe_name text not null, recipe_path text not null,recipe_procedure text not null,recipe_time text not null);";
     public static final String CREATE_INGREDIENT_TABLE = "create table ingredient (ingredient_id integer not null primary key autoincrement unique, " + "ingredient_name text not null, ingredient_unit text not null);";
-    public static final String CREATE_RECIPE_INGREDIENT_TABLE = "create table recipe_ingredient (recipe_id integer not null , ingredient_id integer not null);";
+    public static final String CREATE_RECIPE_INGREDIENT_TABLE = "create table recipe_ingredient (recipe_id integer not null references , ingredient_id integer not null);";
 
 
     Context context;
@@ -90,8 +98,8 @@ public class DbAdapter {
 
     public long insertRecipe_Ingredients(int recipe_id, int ingredient_id) {
         ContentValues initialValues = new ContentValues();
-        initialValues.put(String.valueOf(RECIPE_ID), recipe_id);
-        initialValues.put(String.valueOf(INGREDIENT_ID), ingredient_id);
+        initialValues.put(RECIPE_ID, recipe_id);
+        initialValues.put(INGREDIENT_ID, ingredient_id);
         long r = db.insert(RECIPE_INGREDIENT, null, initialValues);
         return r;
 
