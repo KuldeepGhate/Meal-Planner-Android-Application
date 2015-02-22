@@ -33,14 +33,6 @@ public class DbAdapter {
     public static final String INGREDIENT_NAME = "ingredient_name";
     public static final String INGREDIENT_UNIT = "ingredient_unit";
 
-//    CREATE TABLE orders (
-//            id INTEGER PRIMARY KEY,
-//            customer_id INTEGER,
-//            salesperson_id INTEGER,
-//            FOREIGN KEY(customer_id) REFERENCES customers(id),
-//    FOREIGN KEY(salesperson_id) REFERENCES salespeople(id)
-//            );
-
 
     public static final String CREATE_RECIPE_TABLE = "create table recipe (recipe_id integer not null primary key autoincrement unique, " + "recipe_name text not null, recipe_path text not null,recipe_procedure text not null,recipe_time text not null);";
     public static final String CREATE_INGREDIENT_TABLE = "create table ingredient (ingredient_id integer not null primary key autoincrement unique, " + "ingredient_name text not null, ingredient_unit text not null);";
