@@ -45,6 +45,7 @@ public class DbAdapter {
     DatabaseHelper DBHelper;
     SQLiteDatabase db;
 
+
     public DbAdapter(Context ctx) {
 
         {
@@ -76,6 +77,7 @@ public class DbAdapter {
 
 
     }
+
 
     public long insertIngredients(String ingredient_name, String ingredient_value)
 
