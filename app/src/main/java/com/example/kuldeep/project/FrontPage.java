@@ -124,7 +124,7 @@ public class FrontPage extends ActionBarActivity implements AdapterView.OnItemCl
         else if (position == 1) {
             Toast.makeText(this, "clicked on recipes", Toast.LENGTH_SHORT).show();
             //Call the method, actions to take place when clicked on recipes
-            Intent intent = new Intent(FrontPage.this, Recipe.class);
+            Intent intent = new Intent(FrontPage.this, Recipepage.class);
             startActivity(intent);
 
         } else if (position == 2) {

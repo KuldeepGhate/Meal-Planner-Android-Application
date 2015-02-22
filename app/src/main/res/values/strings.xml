@@ -44,5 +44,6 @@
     <string name="title_activity_recipe">Recipe</string>
     <string name="title_activity_login_signup">LoginSignupActivity</string>
     <string name="title_activity_front_page">FrontPage</string>
+    <string name="title_activity_recipepage">recipepage</string>
 
 </resources>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.kuldeep.project" >
+    package="com.example.kuldeep.project">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -8,28 +8,26 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".Recipe"
-            android:label="@string/title_activity_recipe" >
-        </activity>
+
         <activity
             android:name=".LoginSignupActivity"
-            android:label="@string/title_activity_login_signup" >
-        </activity>
+            android:label="@string/title_activity_login_signup"></activity>
         <activity
             android:name=".FrontPage"
-            android:label="@string/title_activity_front_page" >
-        </activity>
+            android:label="@string/title_activity_front_page"></activity>
+        <activity
+            android:name=".Recipepage"
+            android:label="@string/title_activity_recipepage"></activity>
     </application>
 
 </manifest>
