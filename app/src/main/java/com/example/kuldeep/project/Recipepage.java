@@ -65,11 +65,12 @@ public class Recipepage extends ActionBarActivity {
 
         dbAdapter.close();
 
-        //ArrayAdapter<recipedata> adapter = new ArrayAdapter<recipedata>(this,android.R.layout.simple_list_item_1, android.R.id.text1, array);
 
         ArrayAdapter<recipedata> adapter = new MyListAdapter();
         lister.setAdapter(adapter);
         //** onclick listener for list view*/
+
+
 
     }
 
@@ -82,6 +83,14 @@ public class Recipepage extends ActionBarActivity {
                 itemClickedPosition = position;
                 //Only for the last animal alert box should be displayed
                 Toast.makeText(Recipepage.this, "Clicked Item" + (position), Toast.LENGTH_SHORT).show();
+
+                if(itemClickedPosition==0)
+                {
+
+
+
+
+                }
 
             }
         });
