@@ -134,6 +134,8 @@ public class DbAdapter {
                 db.execSQL(CREATE_RECIPE_TABLE);
                 db.execSQL(CREATE_INGREDIENT_TABLE);
                 db.execSQL(CREATE_RECIPE_INGREDIENT_TABLE);
+
+
             } catch (SQLException e) {
                 e.printStackTrace();
             }
