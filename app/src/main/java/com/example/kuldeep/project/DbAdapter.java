@@ -115,6 +115,18 @@ public class DbAdapter {
     }
 
 
+//    Select I.ingredient_name,I.ingredient_unit,RI.amount
+//    from Ingredient I, Recipe_ingredient RI
+//    where recipe_id IN (SELECT recipe_id from Recipe where recipe_name="pizza") AND RI.Ingredient_id=I.ingredient_id;
+
+//    public Cursor getIngredients(String recipename)
+//    {
+//        db.rawQuery("Select" +   + )
+//
+//
+//    }
+
+
     private static class DatabaseHelper extends SQLiteOpenHelper {
 
         DatabaseHelper(Context context) {

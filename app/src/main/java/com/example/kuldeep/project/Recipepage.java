@@ -88,6 +88,7 @@ public class Recipepage extends ActionBarActivity {
                 Toast.makeText(Recipepage.this, "Clicked Item" + (position), Toast.LENGTH_SHORT).show();
                 LargeDescription();
 
+
             }
         });
 
@@ -99,7 +100,7 @@ public class Recipepage extends ActionBarActivity {
 
 
         Intent newIntent = new Intent(Recipepage.this, recipedescription.class);
-        newIntent.putExtra("formattedAnimal", clickedrecipe);
+        newIntent.putExtra("formattedRecipe", clickedrecipe);
         newIntent.putExtra("debugger", debugger);
 
         startActivity(newIntent);

@@ -1,17 +1,41 @@
 package com.example.kuldeep.project;
 
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 
 public class recipedescription extends ActionBarActivity {
 
+
+    TextView recipe_name;
+    TextView recipe_procedure;
+    ImageView imageView;
+
+
+    recipedata Currentrecipe;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipedescription);
+        Currentrecipe = (recipedata) getIntent().getSerializableExtra("formattedRecipe");
+        recipe_name = (TextView) findViewById(R.id.rname);
+        recipe_procedure = (TextView) findViewById(R.id.procedure);
+        imageView = (ImageView) findViewById(R.id.imageView);
+
+
+//        animalName.setText(currentAnimal.getAnimal_name());
+//        animalImage.setImageResource(currentAnimal.getLarge_display_id());
+//        animalLargeDesp.setText(currentAnimal.getAnimal_large_desp());
+
+
+        recipe_name.setText(Currentrecipe.getRecipe_name());
+        recipe_procedure.setText(Currentrecipe.getProcedure());
+        imageView.setImageResource(Currentrecipe.getIcon());
+
     }
 
 
