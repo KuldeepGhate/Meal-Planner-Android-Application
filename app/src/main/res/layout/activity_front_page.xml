@@ -3,7 +3,7 @@
     android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:theme="@style/Base.TextAppearance.AppCompat.Widget.DropDownItem"
+
     tools:context=".MainActivity">
 
     <ExpandableListView
@@ -24,6 +24,6 @@
         android:layout_width="240dp"
         android:layout_height="match_parent"
         android:layout_gravity="left"
-        android:background="#768"
+        android:background="@color/primary_light"
         android:clickable="true"></ListView>
 </android.support.v4.widget.DrawerLayout>

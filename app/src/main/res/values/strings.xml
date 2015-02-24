@@ -5,12 +5,6 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
 
-    <color name="black">#FFFFFF</color>
-    <color name="expandChildBackground">#99D6D6</color>
-    <color name="ExpandGroupBackground">#009999</color>
-    <color name="primary">#191FE0</color>
-    <color name="primary_dark">#1E22A6</color>
-    <color name="accent">#09DCEB</color>
 
     <string-array name="dishes">
         <item>dosa</item>
@@ -21,6 +15,16 @@
         <item>sbdp</item>
     </string-array>
 
+
+    <string-array name="drawerimages">
+        <item>R.mipmap.burger</item>
+        <item>R.mipmap.burger</item>
+        <item>R.mipmap.burger</item>
+        <item>R.mipmap.burger</item>
+        <item>R.mipmap.burger</item>
+
+
+    </string-array>
     <string name="title_activity_recipes">Recipes</string>
     <string name="drawer_open">Open Navigation Drawer</string>
     <string name="drawer_close">Close Navigation Drawer</string>

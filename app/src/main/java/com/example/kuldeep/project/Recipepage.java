@@ -113,8 +113,8 @@ public class Recipepage extends ActionBarActivity {
 
         //InsertRecipes
 
-        dbAdapter.insertRecipe("Pizza", R.mipmap.pizza, " Put yeast, sugar, salt, and dry milk in a large (2 qt.) bowl. Add water and stir to mix well. Allow to sit for two minutes. Add oil and stir again. Add flour and stir until dough forms and flour is absorbed.", 2);
-        dbAdapter.insertRecipe("Bronco burger", R.mipmap.burger, " Put yeast, sugar, salt, and dry milk in a large (2 qt.) bowl. Add water and stir to mix well. Allow to sit for two minutes. Add oil and stir again. Add flour and stir until dough forms and flour is absorbed.", 1);
+        dbAdapter.insertRecipe("Pizza", R.mipmap.burger, " Put yeast, sugar, salt, and dry milk in a large (2 qt.) bowl. Add water and stir to mix well. Allow to sit for two minutes. Add oil and stir again. Add flour and stir until dough forms and flour is absorbed.", 2);
+        dbAdapter.insertRecipe("Bronco burger", R.mipmap.pavbhaji, " Put yeast, sugar, salt, and dry milk in a large (2 qt.) bowl. Add water and stir to mix well. Allow to sit for two minutes. Add oil and stir again. Add flour and stir until dough forms and flour is absorbed.", 1);
         dbAdapter.insertRecipe("Taco salad", R.mipmap.pizza, " Put yeast, sugar, salt, and dry milk in a large (2 qt.) bowl. Add water and stir to mix well. Allow to sit for two minutes. Add oil and stir again. Add flour and stir until dough forms and flour is absorbed.", 30);
         dbAdapter.insertRecipe("Noodles", R.mipmap.tacosalad, " Put yeast, sugar, salt, and dry milk in a large (2 qt.) bowl. Add water and stir to mix well. Allow to sit for two minutes. Add oil and stir again. Add flour and stir until dough forms and flour is absorbed.", 45);
         dbAdapter.insertRecipe("pav bhaji", R.mipmap.pavbhaji, " Put yeast, sugar, salt, and dry milk in a large (2 qt.) bowl. Add water and stir to mix well. Allow to sit for two minutes. Add oil and stir again. Add flour and stir until dough forms and flour is absorbed.", 50);

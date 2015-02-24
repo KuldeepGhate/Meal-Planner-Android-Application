@@ -40,7 +40,7 @@
         android:layout_below="@+id/recipe_title"
         android:layout_toRightOf="@+id/item_icon"
         android:text="New Text"
-        android:textColor="@color/ColorPrimary" />
+        android:textColor="@color/primary_light" />
 
 
 </RelativeLayout>

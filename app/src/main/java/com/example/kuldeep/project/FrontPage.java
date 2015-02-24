@@ -10,13 +10,17 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ExpandableListView;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class FrontPage extends ActionBarActivity implements AdapterView.OnItemClickListener {
@@ -31,6 +35,7 @@ public class FrontPage extends ActionBarActivity implements AdapterView.OnItemCl
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
     private ActionBarDrawerToggle mDrawerToggle;
+    private List<ObjectDrawerItem> myDrawer = new ArrayList<ObjectDrawerItem>();
 
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
@@ -50,14 +55,23 @@ public class FrontPage extends ActionBarActivity implements AdapterView.OnItemCl
         setContentView(R.layout.activity_front_page);
 
 
+        populateADrawer();
+
+
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
 
         mDrawerTitles = getResources().getStringArray(R.array.drawer_items);
         mDrawerList = (ListView) findViewById(R.id.drawerList);
-        mDrawerList.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, mDrawerTitles));
+//        mDrawerList.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, mDrawerTitles));
+        ArrayAdapter<ObjectDrawerItem> adapter = new MyListAdapter();
+        mDrawerList.setAdapter(adapter);
         mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
         //toolbar = (Toolbar) findViewById(R.id.tool_bar);
 
+
+//        ArrayAdapter<ObjectDrawerItem> adapter = new MyListAdapter();
+//        ListView list = (ListView) findViewById(R.id.drawerList);
+//        list.setAdapter(adapter);
 
         ExpandList = (ExpandableListView) findViewById(R.id.ExpList);
         ExpListItems = SetStandardGroups();
@@ -126,6 +140,13 @@ public class FrontPage extends ActionBarActivity implements AdapterView.OnItemCl
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 
+
+    }
+
+    private void populateADrawer() {
+
+        drawerItemGenerator gsanimal = new drawerItemGenerator();
+        myDrawer = gsanimal.drawerItemGenerator();
 
     }
 
@@ -303,6 +324,39 @@ public class FrontPage extends ActionBarActivity implements AdapterView.OnItemCl
             selectItem(position);
         }
 
+
+    }
+
+
+    private class MyListAdapter extends ArrayAdapter<ObjectDrawerItem> {
+        public MyListAdapter() {
+
+            super(FrontPage.this, R.layout.navigationdrawer, myDrawer);
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+
+            View itemView = convertView;
+            if (itemView == null) {
+                itemView = getLayoutInflater().inflate(R.layout.navigationdrawer, parent, false);
+
+            }
+            //Find animal
+            // fill view
+            ObjectDrawerItem drawerItem = myDrawer.get(position);
+
+
+            ImageView imageView = (ImageView) (itemView.findViewById(R.id.drawericon));
+            imageView.setImageResource(drawerItem.getIcon());
+
+
+            TextView recipeNameView = (TextView) (itemView.findViewById(R.id.drawertitle));
+            recipeNameView.setText(drawerItem.getName());
+
+
+            return itemView;
+        }
 
     }
 
