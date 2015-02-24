@@ -22,6 +22,7 @@ public class MainActivity extends ActionBarActivity {
         Parse.initialize(this, "MrkxcjSNkLte4MQQycE83O1Y10hHQ40bTI8L18Pv", "hr6qdFS8nJ74fZTr0GodzcSAdVw6bcDQSZLxbOhv");
 
         setContentView(R.layout.activity_login_signup);
+        DbAdapter dbAdapter;
 
 
         ParseUser.enableAutomaticUser();

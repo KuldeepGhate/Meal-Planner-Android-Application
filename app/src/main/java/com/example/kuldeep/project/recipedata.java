@@ -1,9 +1,11 @@
 package com.example.kuldeep.project;
 
+import java.io.Serializable;
+
 /**
  * Created by prajakta on 2/22/15.
  */
-public class recipedata {
+public class recipedata implements Serializable {
 
     private String recipe_name;
     private String time;

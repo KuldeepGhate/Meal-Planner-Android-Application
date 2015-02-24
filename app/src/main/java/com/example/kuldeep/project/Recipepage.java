@@ -1,5 +1,6 @@
 package com.example.kuldeep.project;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -28,6 +29,8 @@ public class Recipepage extends ActionBarActivity {
     private ListView lister;
     private List<recipedata> myRecipes = new ArrayList<recipedata>();
     private int itemClickedPosition;
+    private boolean debugger = false;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +63,7 @@ public class Recipepage extends ActionBarActivity {
 
         while (cursor.moveToNext()) {
             //String recipename = cursor.getString(cursor.getColumnIndex("recipe_name"));
-            myRecipes.add(new recipedata(cursor.getString(cursor.getColumnIndex("recipe_name")), "Time to Cook : " + cursor.getString(cursor.getColumnIndex("recipe_time")), cursor.getString(cursor.getColumnIndex("recipe_procedure")), Integer.parseInt(cursor.getString(cursor.getColumnIndex("recipe_path"))), ""));
+            myRecipes.add(new recipedata(cursor.getString(cursor.getColumnIndex("recipe_name")), "Time to Cook : " + cursor.getString(cursor.getColumnIndex("recipe_time")), cursor.getString(cursor.getColumnIndex("recipe_procedure")), Integer.parseInt(cursor.getString(cursor.getColumnIndex("recipe_path"))), " "));
         }
 
         dbAdapter.close();
@@ -83,17 +86,24 @@ public class Recipepage extends ActionBarActivity {
                 itemClickedPosition = position;
                 //Only for the last animal alert box should be displayed
                 Toast.makeText(Recipepage.this, "Clicked Item" + (position), Toast.LENGTH_SHORT).show();
-
-                if(itemClickedPosition==0)
-                {
-
-
-
-
-                }
+                LargeDescription();
 
             }
         });
+
+    }
+
+    private void LargeDescription() {
+
+        recipedata clickedrecipe = myRecipes.get(itemClickedPosition);
+
+
+        Intent newIntent = new Intent(Recipepage.this, recipedescription.class);
+        newIntent.putExtra("formattedAnimal", clickedrecipe);
+        newIntent.putExtra("debugger", debugger);
+
+        startActivity(newIntent);
+
 
     }
 

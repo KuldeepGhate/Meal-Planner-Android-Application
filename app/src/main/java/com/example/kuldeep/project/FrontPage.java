@@ -1,6 +1,7 @@
 package com.example.kuldeep.project;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
@@ -32,9 +33,22 @@ public class FrontPage extends ActionBarActivity implements AdapterView.OnItemCl
     private ActionBarDrawerToggle mDrawerToggle;
 
     @Override
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        mDrawerToggle.syncState();
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        mDrawerToggle.onConfigurationChanged(newConfig);
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_front_page);
+
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
 
@@ -42,7 +56,7 @@ public class FrontPage extends ActionBarActivity implements AdapterView.OnItemCl
         mDrawerList = (ListView) findViewById(R.id.drawerList);
         mDrawerList.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, mDrawerTitles));
         mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
-        toolbar = (Toolbar) findViewById(R.id.tool_bar);
+        //toolbar = (Toolbar) findViewById(R.id.tool_bar);
 
 
         ExpandList = (ExpandableListView) findViewById(R.id.ExpList);
@@ -79,8 +93,8 @@ public class FrontPage extends ActionBarActivity implements AdapterView.OnItemCl
 
         mDrawerToggle = new ActionBarDrawerToggle(
                 this,                  /* host Activity */
-                mDrawerLayout,         /* DrawerLayout object */
-                toolbar,  /* nav drawer icon to replace 'Up' caret */
+                mDrawerLayout,
+                toolbar,/* DrawerLayout object */
                 R.string.drawer_open,  /* "open drawer" description */
                 R.string.drawer_close  /* "close drawer" description */
         ) {
@@ -102,6 +116,8 @@ public class FrontPage extends ActionBarActivity implements AdapterView.OnItemCl
                 super.onDrawerOpened(drawerView);
 
             }
+
+
         };
 
         // Set the drawer toggle as the DrawerListener
@@ -170,6 +186,11 @@ public class FrontPage extends ActionBarActivity implements AdapterView.OnItemCl
         ArrayList<ExpandListChild> list6 = new ArrayList<ExpandListChild>();
         ArrayList<ExpandListChild> list7 = new ArrayList<ExpandListChild>();
         ArrayList<ExpandListChild> list8 = new ArrayList<ExpandListChild>();
+
+
+        DbAdapter dbAdapter;
+
+
 
         // Group1 ,contains food item "PAVBHAJi " & "DOsa"
         ExpandListGroup gru1 = new ExpandListGroup();
